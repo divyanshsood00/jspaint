@@ -8,4 +8,4 @@
 
 
 ### Made in love with javascript 
-#### Hosted on recommendation of Tushar Jain SDE@Groww
+#### Hosted on recommendation of Tushar Jain 
