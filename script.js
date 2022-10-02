@@ -8,11 +8,11 @@ const supermodeBtn = document.getElementById('supermode')
 
 const ctx = canvas.getContext('2d');
 
-let size = 10
+let size = 6
 let isPressed = false
-colorEl.value = 'black'
+colorEl.value = '#ff0000'
 let color = colorEl.value
-let supermode = false
+let supermode = true
 let x
 let y
 
@@ -75,20 +75,20 @@ function updateSizeOnScreen() {
 }
 
 increaseBtn.addEventListener('click', () => {
-    size += 5
+    size += 2
 
-    if(size > 50) {
-        size = 50
+    if(size > 20) {
+        size = 20
     }
 
     updateSizeOnScreen()
 })
 
 decreaseBtn.addEventListener('click', () => {
-    size -= 5
+    size -= 2
 
-    if(size < 5) {
-        size = 5
+    if(size < 2) {
+        size = 2
     }
 
     updateSizeOnScreen()
