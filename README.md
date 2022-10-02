@@ -8,6 +8,6 @@
 - [LIVE (click to try)](https://divyanshsood00.github.io/jspaint/)
 
 ![New cool mode](./new-cool-mode.png)
-![Cool mode](./cool-mode-preview.png)
+<!-- ![Cool mode](./cool-mode-preview.png) -->
 
 ### Made in love with JavaScript   
