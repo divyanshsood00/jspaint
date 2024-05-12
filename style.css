@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgba(134, 94, 250, 0.37);
+  /* background-color: rgba(134, 94, 250, 0.37); */
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
@@ -14,24 +14,28 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0;
+  position: relative;
 }
 
-canvas {
+/* canvas {
   border: 3px solid rgb(190, 0, 190);
   border-radius: 10px;
   background-color: #fff;
-}
+} */
 
 .toolbox {
-  background-color: rgba(219, 0, 219, 0.74);
+  background-color: rgba(255, 0, 0, 0.701);
   /* border: 10px solid rgb(238, 123, 142); */
+  /* margin-top: -100px; */
   border-radius: 50px;
   height: 3rem;
   display: flex;
   align-items: center;
   justify-content: start;
   width: 806px;
-  margin-top: 20px;
+  max-width: 100%;
+  position: absolute;
+  bottom: 20px;
   padding: 1rem;
 }
 
@@ -42,15 +46,18 @@ canvas {
   justify-content: center;
   align-items: center;
   font-size: 1.25rem;
-  border-radius: 50%;
+  border-radius: .5rem;
   height: 2rem;
   width: 2rem;
   margin: 0.25rem;
   padding: 0.25rem;
   cursor: pointer;
 }
+.toolbox > *:nth-last-child(7){
+  margin-left: auto;
+}
 
-.toolbox > *:nth-last-child(2) {
+.toolbox > *:nth-last-child(5) {
   margin-left: auto;
 }
 
@@ -61,4 +68,40 @@ canvas {
 
 .pink {
   background-color: pink !important;
+}
+
+.stoolbox{
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.337);
+  width: 160px;
+  max-width: 50%;
+  padding: 1.25rem;
+}
+
+
+/* .clear-box{
+  size: 30px;
+  position: absolute;
+  top:5px;
+  right: 5px;
+  z-index: 999;
+  background-color: #fff;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  border-radius: .5rem;
+  height: 2rem;
+  width: 2rem;
+  margin: 0.25rem;
+  padding: 0.25rem;
+  cursor: pointer;
+} */
+.hide{
+  visibility: hidden;
+} 
+input[type="file"] {
+  display: none;
 }

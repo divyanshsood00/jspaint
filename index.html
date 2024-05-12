@@ -10,16 +10,29 @@
 </head>
 <body>
     <canvas id="canvas" width="1500" height="850"></canvas>
+    <div class="toolbox stoolbox">
+        <label for="restoreBackup" class="">
+            <img height=25px src="images/svg/upload-svgrepo-com.svg" alt="^">
+        </label>
+        <input type="file" id="restoreBackup" accept=".bkp">
+        <div class="" onclick="screenshot()"><img height=25px src="images/svg/sreenshot-desktop-svgrepo-com.svg" alt="s"></div>
+        <div id="downloadBackup" ><img height=25px src="images/svg/download-svgrepo-com.svg" alt="v"></img></div>
+    </div>
     <div class="toolbox">
         <button id ='decrease'>-</button>
-        <span id="size">6</span>
+        <span id="size">8</span>
         <button id = 'increase'>+</button>
         <input type="color" id = 'color'>
-        
-        <button id="supermode" class="pink">><</button>
-        <button id = 'clear'>X</button>
+        <button id="undo"><img height=38px src="images/svg/undo-left-square-svgrepo-com.svg" alt="<-"></button>
+        <button id="redo"><img height=38px src="images/svg/undo-right-round-square-svgrepo-com.svg" alt="->"></button>
+        <button id="eraser"><img height=28px src="images/svg/eraser-svgrepo-com.svg" alt="->"></button>
+        <button id="crayonMode"><img height=22px src="images/svg/crayon-svgrepo-com.svg" alt="C"></button>
+        <button id="artMode"><img height=25px src="images/svg/spiral-lollipop-svgrepo-com.svg" alt="L"></button>
+        <button id="markerMode" class="pink"><img height=28px src="images/svg/highlighter-head-2-marker-sharpie-svgrepo-com.svg" alt="M"></button>
+        <button id = "clear"><img height=47px src="images/svg/cancel-svgrepo-com.svg" alt="X"></button>
     </div>
 
     <script src='script.js'></script>
+    <!-- <script src="DoublyLinkedList.js"></script> -->
 </body>
 </html>
