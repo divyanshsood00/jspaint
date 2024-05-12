@@ -116,13 +116,13 @@ let isPressed = false
 colorEl.value = '#ff0000'
 let backgroundColor = "#ffffff"
 let color = colorEl.value
-let artMode = false;
-let crayonMode = false;
-let eraserMode = false;
-let markerMode = true;
+var artMode = false;
+var crayonMode = false;
+var eraserMode = false;
+var markerMode = true;
 let undosteps = 50;
 let redosteps = 50;
-let autoSaveInterval = 100000;
+let autoSaveInterval = 15000;
 let nx
 let ny
 
@@ -208,7 +208,11 @@ function redo(){
 }
 
 function redraw(){
-
+    let head = undoStack.head;
+    while(head!=null){
+        restoreStroke(head)
+        head = head.next
+    }
 }
 
 
@@ -228,7 +232,6 @@ function eraseStroke(laststroke) {
         data.size + extraWidthMarks);
 }
 function restoreStroke(laststroke) {
-    console.log(laststroke)
     const data = laststroke.data;
     drawCircle(data.x2,
         data.y2,
@@ -334,9 +337,11 @@ restoreBackupField.addEventListener('change', function() {
     reader.onload = function(e) {
       const text = e.target.result;
       console.log(text);
-      undoStack.retrieveFromBackupFile(text)
+      undoStack.retrieveFromBackupFile(text);
+      redraw()
     };
     reader.readAsText(file);
+    
   });
 
 clearEl.addEventListener('click', () => {
