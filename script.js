@@ -116,9 +116,9 @@ const redoStack = new DoublyLinkedList();
 
 // EVENTS
 
-//for drawing with mouse
+// for drawing with mouse
 canvas.addEventListener("mousedown", (e) => {
-  startDraw(e);
+  startDrawMouse(e);
 });
 
 canvas.addEventListener("mouseout", (e) => {
@@ -153,11 +153,58 @@ canvas.addEventListener("mousemove", (e) => {
   }
 });
 
+// for drawing with touch
+canvas.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    startDrawTouch(e.touches[0]);
+  });
+  
+  canvas.addEventListener("touchend", (e) => {
+    stopDraw();
+  });
+  
+  canvas.addEventListener("touchcancel", (e) => {
+    stopDraw();
+  });
+  
+  canvas.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    if (isPressed) {
+      const x2 = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+      const y2 = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+      if (!crayonMode) {
+        drawCircle(x2, y2, color, nsize);
+      }
+      drawLine(nx, ny, x2, y2, color, nsize);
+      let obj = {
+        x: nx,
+        y: ny,
+        x2,
+        y2,
+        size: nsize,
+        color,
+      };
+      undoStack.insertAtBeginning(obj);
+      if (!artMode) {
+        ny = y2;
+        nx = x2;
+      }
+    }
+  });
+  
+  function startDrawTouch(e) {
+    isPressed = true;
+    nx = e.clientX - canvas.getBoundingClientRect().left;
+    ny = e.clientY - canvas.getBoundingClientRect().top;
+  }
+
+// for autosave
 setTimeout(function () {
   undoStack.saveToLocalStorage();
   console.log("Saved to localstorage...");
 }, autoSaveInterval);
 
+// for toggles and buttons
 increaseBtn.addEventListener("click", () => {
   nsize += 2;
   if (nsize > 20) {
@@ -237,20 +284,6 @@ eraserModeBtn.addEventListener("click", (e) => {
 undoBtn.addEventListener("click", (e) => undo());
 redoBtn.addEventListener("click", (e) => redo());
 
-function getDateString(a) {
-  const date = new Date();
-  return (
-    date.getMinutes() +
-    "-" +
-    date.getHours() +
-    "_" +
-    date.getDay() +
-    "-" +
-    date.getMonth() +
-    "-" +
-    date.getFullYear()
-  );
-}
 
 // Drawing method declarations
 function screenshot() {
@@ -315,7 +348,7 @@ function restoreStroke(laststroke) {
   drawLine(data.x, data.y, data.x2, data.y2, data.color, data.size);
 }
 
-function startDraw(e) {
+function startDrawMouse(e) {
   isPressed = true;
   nx = e.offsetX;
   ny = e.offsetY;
@@ -403,3 +436,19 @@ function toggleArtMode() {
   artMode = !artMode;
   artModeBtn.classList.toggle("pink");
 }
+
+// Additional method Declarations
+function getDateString(a) {
+    const date = new Date();
+    return (
+      date.getMinutes() +
+      "-" +
+      date.getHours() +
+      "_" +
+      date.getDay() +
+      "-" +
+      date.getMonth() +
+      "-" +
+      date.getFullYear()
+    );
+  }

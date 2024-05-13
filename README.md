@@ -32,5 +32,5 @@
 
 
 <!-- ![Cool mode](./cool-mode-preview.png) -->
-#### Let me know if you find any bugs (touchscreen not supported).
+#### Let me know if you find any bugs (touchscreen supported, might have issues).
 #### Made in live with JS.   
